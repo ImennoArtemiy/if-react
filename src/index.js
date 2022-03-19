@@ -1,11 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
-import HomesSection from './components/Homes/HomesSection';
+import App from './views/App';
 
 ReactDOM.render(
   <React.StrictMode>
-    <HomesSection />
+    <App/>
   </React.StrictMode>,
   document.getElementById('root')
 );

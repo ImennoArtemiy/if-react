@@ -1,5 +1,6 @@
-import './../modifier.css'
-import './Card.css'
+import './HomesSection.css'
+import Title from "../../components/Title/Title";
+import Card from "../../components/Card/Card";
 
 const data = [
     {
@@ -60,15 +61,17 @@ const data = [
     },
 ];
 
-function Card () {
-
-    return data.map((hotel) => {
-        return <div className='homesCard' key={hotel.id}>
-            <img src={hotel.imageUrl} alt="hotel"/>
-            <p className='-blue-color'>{hotel.name}</p>
-            <p className='-gray-color'>{`${hotel.city}, ${hotel.country}`}</p>
-        </div>
-    })
+function HomesSection () {
+    return (
+        <section className='homesSection'>
+            <div className='wrapper'>
+                <Title text={'Homes guests loves'}/>
+                <div className='homesCardBody'>
+                    {data.map(i => <Card key={i.id} item={i} />)}
+                </div>
+            </div>
+        </section>
+    )
 }
 
-export default Card
+export default HomesSection
