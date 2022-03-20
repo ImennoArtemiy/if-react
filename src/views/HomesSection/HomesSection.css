@@ -1,0 +1,8 @@
+.homesSection {
+    background-color: #EAF0F9;
+}
+.homesCardBody {
+    display: flex;
+    flex-wrap: wrap;
+}
+
