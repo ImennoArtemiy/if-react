@@ -1,0 +1,22 @@
+.headerLogo {
+    display: flex;
+    align-items: center;
+    fill: #3077C6;
+    width: 205px;
+    height: 40px;
+    cursor: pointer;
+
+}
+.themeSwitchIcon {
+    fill: #FFFFFF;
+    width: 30px;
+    height: 30px;
+    margin-right: 24px;
+    cursor: pointer;
+}
+.accountIcon {
+    fill: #FFFFFF;
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+}

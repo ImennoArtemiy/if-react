@@ -1,8 +1,9 @@
 import './Title.css'
 
-function Title (props) {
+function Title ({text}) {
+
     return (
-        <h2>{props.text}</h2>
+        <h2>{text}</h2>
     )
 }
 

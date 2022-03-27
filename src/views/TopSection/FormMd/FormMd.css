@@ -1,0 +1,82 @@
+form {
+    position: relative;
+    margin-bottom: 120px;
+}
+.searchField {
+
+}
+.textToFindInput {
+    padding: 19px 24px 19px 24px;
+    width: 30%;
+    height: 64px;
+    border-radius: 8px;
+    border: 3px solid #F3F3F4;
+    border-right: 0;
+    font-size: 18px;
+    position: absolute;
+    left: -0.2%;
+    transition: .2s ease;
+}
+.textToFindLabel {
+    position: absolute;
+    left: 2%;
+    transform: translate(0, 100%);
+    transition: .5s ease;
+    font-size: 18px;
+    line-height: 21px;
+}
+.textToFindInput:focus + .textToFindLabel,
+.textToFindInput:valid +.textToFindLabel {
+    position: absolute;
+    top: -85%;
+    left: 2%;
+    transform: none;
+    color: #FFFFFF;
+}
+.borderContainer {
+    background-color: #FFFFFF;
+    border: 3px solid #F3F3F4;
+    height: 64px;
+    border-radius: 8px;
+    margin-top: 16px;
+}
+.buttonContainer {
+    display: flex;
+    justify-content: flex-end;
+    max-height: 64px;
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+.calendarContainer, .filterContainer {
+    font-size: 18px;
+    line-height: 21px;
+    padding: 21px 24px;
+    border: 3px solid rgba(245, 189, 65, 0);
+    border-radius: 8px;
+    cursor: pointer;
+    transition: .2s ease;
+}
+.calendarContainer:hover, .filterContainer:hover {
+    border: 3px solid #dedee1;
+}
+.calendarContainer:focus, .filterContainer:focus {
+    border: 3px solid rgba(245, 189, 65, 100);
+}
+.searchButton {
+    padding: 15px 55px;
+    background-color: #3077C6;
+    color: #FFFFFF;
+    border: 3px solid rgba(255, 255, 255, 0);
+    border-radius: 8px;
+    font-size: 24px;
+    line-height: 28px;
+    transition: .2s ease;
+}
+.searchButton:hover {
+    background-color: #4387d7;
+}
+.searchButton:active {
+    background-color: #1a5ca6;
+    border: 3px solid #FFFFFF;
+}
