@@ -1,8 +1,4 @@
-import './HomesSection.css'
-import Title from "../../components/Title/Title";
-import Card from "../../components/Card/Card";
-
-const data = [
+export const hotels = [
     {
         id: '71ce9eac-e9b9-44f0-a342-9ff0b565f3b7',
         name: 'Hotel Leopold',
@@ -60,18 +56,3 @@ const data = [
         imageUrl: 'https://res.cloudinary.com/intellectfox/image/upload/v1610379365/fe/the-andaman-resort_d2xksj.jpg',
     },
 ];
-
-function HomesSection () {
-    return (
-        <section className='homesSection'>
-            <div className='wrapper'>
-                <Title text={'Homes guests loves'}/>
-                <div className='homesCardBody'>
-                    {data.map(i => <Card key={i.id} item={i} />)}
-                </div>
-            </div>
-        </section>
-    )
-}
-
-export default HomesSection

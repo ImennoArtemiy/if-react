@@ -4,6 +4,23 @@
   box-sizing: border-box;
   margin: 0;
   padding: 0;
+  border:none;
+}
+li {
+  list-style: none;
+}
+button {
+  background-color: transparent;
+  cursor: pointer;
+}
+input {
+  float: left;
+}
+input:focus {outline: 0;}
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
 }
 
 img {
@@ -16,7 +33,12 @@ body {
   font-size: 24px;
   line-height: 28px;
 }
-
+.topWrapper {
+  max-width: 1232px;
+  margin: 0 auto;
+  padding: 205px 32px 140px;
+  box-sizing: content-box;
+}
 .wrapper {
   max-width: 1232px;
   margin: 0 auto;
