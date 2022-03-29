@@ -1,18 +1,40 @@
 import './App.css'
 import TopSection from "./TopSection/TopSection";
 import HotelsResultSection from "./HotelsResultSection/HotelsResultSection";
-import {useState} from "react";
-import {hotels} from "../data/data";
+import {useEffect, useState} from "react";
+
 
 function App() {
     const [searchValue, setSearchValue] = useState([])
+    const [serverData, setServerData] = useState([])
+    const [value, setValue] = useState('0')
+
+    useEffect(() => {
+
+        fetch('https://fe-student-api.herokuapp.com/api/hotels/popular')
+            .then((response) => {
+                return  response.json()
+            })
+            .then(setServerData)
+    }, [])
+
+
+    useEffect(() => {
+
+        fetch(`https://fe-student-api.herokuapp.com/api/hotels?search=${value}`)
+            .then((response) => {
+                return  response.json()
+            })
+            .then(setSearchValue)
+    }, [value])
+
 
     return <main>
-        <TopSection searchValue={searchValue} setSearchValue={setSearchValue}/>
+        <TopSection onChange={setValue}/>
 
         {searchValue.length > 0 && <HotelsResultSection data={searchValue} title={'Available hotels'}/>}
 
-        <HotelsResultSection data={hotels} title={'Homes guests loves'}/>
+        {serverData.length > 0 && <HotelsResultSection data={serverData} title={'Homes guests loves'}/>}
     </main>
 }
 

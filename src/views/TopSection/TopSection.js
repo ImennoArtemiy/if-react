@@ -5,7 +5,7 @@ import FormMd from "./FormMd/FormMd"
 import TopSectionIcons from "./TopSectionIcons/TopSectionIcons";
 
 
-function TopSection ({searchValue, setSearchValue}) {
+function TopSection ({onChange}) {
 
     return <section className='topSection'>
         <TopSectionIcons />
@@ -14,7 +14,7 @@ function TopSection ({searchValue, setSearchValue}) {
             <div className="topWrapper">
                 <h1>Discover stays <br/>
                     to live, work or just relax</h1>
-                <FormMd searchValue={searchValue} setSearchValue={setSearchValue} />
+                <FormMd onChange={onChange} />
                 <div className='stores'>
                     <a href="https://play.google.com" target='_blank'>
                         <svg className='googlePlay'>
