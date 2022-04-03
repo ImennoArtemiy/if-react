@@ -1,0 +1,30 @@
+.calendarContainer {
+    padding: 20px 24px;
+    border: 3px solid rgba(245, 189, 65, 0);
+    border-radius: 8px;
+    cursor: pointer;
+    transition: .2s ease;
+}
+.calendarContainer:hover {
+    border: 3px solid #dedee1;
+}
+.calendarContainer:focus {
+    border: 3px solid rgba(245, 189, 65, 100);
+}
+.react-datepicker {
+    margin-top: 14px;
+}
+.form__item {
+    font-size: 18px;
+    line-height: 21px;
+
+}
+.calendarLabel {
+    position: absolute;
+    top: 2%;
+    left: 4%;
+    transform: translate(0, 100%);
+    transition: .5s ease;
+    font-size: 18px;
+    line-height: 21px;
+}

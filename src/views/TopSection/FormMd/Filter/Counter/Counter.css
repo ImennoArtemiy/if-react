@@ -1,0 +1,29 @@
+.counterBlock {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 16px;
+    line-height: 18px;
+    color: #333333;
+}
+.counterBlock:not(:last-child) {
+    margin-bottom: 12px;
+}
+.counterBody {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 108px;
+    margin-left: 48px;
+}
+.counterBtn {
+    width: 30px;
+    height: 30px;
+    color: #3077C6;
+    border: 1px solid #3077C6;
+}
+
+.-disableBtn {
+    color: #CECECE;
+    border: 1px solid #CECECE;
+}
