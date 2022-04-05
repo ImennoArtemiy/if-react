@@ -19,6 +19,7 @@ form {
 }
 .textToFindLabel {
     position: absolute;
+    top: 2%;
     left: 2%;
     transform: translate(0, 100%);
     transition: .5s ease;
@@ -48,7 +49,10 @@ form {
     top: 0;
     right: 0;
 }
-.calendarContainer, .filterContainer {
+.filterContainer {
+    position: relative;
+}
+.filterContainer {
     font-size: 18px;
     line-height: 21px;
     padding: 21px 24px;
@@ -57,10 +61,10 @@ form {
     cursor: pointer;
     transition: .2s ease;
 }
-.calendarContainer:hover, .filterContainer:hover {
+.filterContainer:hover {
     border: 3px solid #dedee1;
 }
-.calendarContainer:focus, .filterContainer:focus {
+.filterContainer:focus {
     border: 3px solid rgba(245, 189, 65, 100);
 }
 .searchButton {
