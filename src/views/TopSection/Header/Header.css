@@ -3,35 +3,41 @@ header {
     justify-content: space-between;
     max-width: 1232px;
     margin: 0 auto;
-    padding-top: 30px;
+    padding: 30px 32px 0;
     box-sizing: content-box;
 }
+.headerLogo {
+    transition: 0.2s ease;
+}
+.headerLogo:active {
+    fill: #2052af;
+}
 
-.header__menu {
+.headerMenu {
     display: flex;
 }
-.menu__text {
+.menuText {
     display: flex;
     align-items: center;
     font-size: 24px;
     line-height: 28px;
 }
-.menu__text a {
+.menuText a {
     color: #FFFFFF;
     text-decoration: none;
     margin-right: 24px;
     transition: 0.2s ease;
 }
-.menu__text a:hover {
+.menuText a:hover {
     color:rgba(245, 189, 65, 1);
 }
-.menu__text a:active {
+.menuText a:active {
     color: rgb(211, 149, 12);
 }
-.menu__link {
+.menuLink {
     position: relative;
 }
-.menu__link:after {
+.menuLink:after {
     display: none;
     position: absolute;
     left: 8%;
@@ -41,13 +47,23 @@ header {
     height: 2.5px;
     background-color: #F5BD41;
 }
-.menu__link:hover:after {
+.menuLink:hover:after {
     display: block;
 }
-.menu__icons {
+.menuIcons {
     display: flex;
     align-items: center;
 }
-.menu__icons a {
+.menuIcons a {
     margin-left: 24px;
+}
+.menuIcon {
+    transition: 0.2s ease;
+
+}
+.menuIcon:hover {
+    fill:rgba(245, 189, 65, 1);
+}
+.menuIcon:active {
+    fill: rgb(211, 149, 12);
 }
