@@ -2,11 +2,12 @@
     width: calc(25% - 12px);
     margin-top: 16px;
 }
-
+.hotelLink{
+    text-decoration: none;
+}
 .homesCard:not(:nth-child(4n)) {
     margin-right: 16px;
 }
-
 .homesCard img {
     display: block;
     width: 296px;

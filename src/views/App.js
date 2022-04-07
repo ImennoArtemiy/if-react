@@ -1,8 +1,8 @@
 import './App.css'
 import TopSection from "./TopSection/TopSection";
 import HotelsResultSection from "./HotelsResultSection/HotelsResultSection";
-import {useEffect, useState} from "react";
-
+import React, {useEffect, useState} from "react";
+import Footer from "./Footer/Footer";
 
 function App() {
     const [searchValue, setSearchValue] = useState([])
@@ -13,7 +13,7 @@ function App() {
 
         fetch('https://fe-student-api.herokuapp.com/api/hotels/popular')
             .then((response) => {
-                return  response.json()
+                return response.json()
             })
             .then(setServerData)
     }, [])
@@ -23,19 +23,25 @@ function App() {
 
         fetch(`https://fe-student-api.herokuapp.com/api/hotels?search=${value}`)
             .then((response) => {
-                return  response.json()
+                return response.json()
             })
             .then(setSearchValue)
     }, [value])
 
 
-    return <main>
-        <TopSection onChange={setValue}/>
+    return <>
+        <main>
+            <TopSection onChange={setValue}/>
 
-        {searchValue.length > 0 && <HotelsResultSection data={searchValue} title={'Available hotels'}/>}
+            {searchValue.length > 0 && <HotelsResultSection data={searchValue} title={'Available hotels'}/>}
 
-        {serverData.length > 0 && <HotelsResultSection data={serverData} title={'Homes guests loves'}/>}
-    </main>
+            {serverData.length > 0 && <HotelsResultSection data={serverData} title={'Homes guests loves'}/>}
+
+        </main>
+        <Footer/>
+    </>
+
+
 }
 
 export default App
