@@ -1,14 +1,24 @@
 import './Header.css'
 import HeaderIcons from "./HeaderIcons/HeaderIcons";
 import {Link} from "react-router-dom";
+import SignOut from "../SignOut/SignOut";
+import {useSelector} from "react-redux";
+import {useState} from "react";
 
-function Header ({wrapperStyle}) {
+function Header ({wrapperStyle, accountStyle}) {
+
+    const isLogin = useSelector(state => state.user.isLogged)
+    const [wantsToOut, setWantsToOut] = useState(false)
+
+    const accountClick = () => {
+        wantsToOut ? setWantsToOut(false) : setWantsToOut(true)
+    }
 
     return  <header style={wrapperStyle}>
         <HeaderIcons />
         <Link to='/'>
             <svg className='headerLogo'>
-                <use xlinkHref='#logo'/>
+                <use href='#logo'/>
             </svg>
         </Link>
         <nav className="headerMenu">
@@ -20,9 +30,15 @@ function Header ({wrapperStyle}) {
                 <svg className='themeSwitchIcon menuIcon'>
                     <use href='#themeSwitch'/>
                 </svg>
-                <svg className='accountIcon menuIcon'>
+                <svg style={accountStyle}
+                     className={wantsToOut ? 'accountIcon menuIcon -orangeFill' : 'accountIcon menuIcon -whiteFill'}
+                     onClick={accountClick}
+                >
                     <use href='#account'/>
                 </svg>
+                {
+                  isLogin && wantsToOut && <SignOut />
+                }
             </div>
         </nav>
     </header>

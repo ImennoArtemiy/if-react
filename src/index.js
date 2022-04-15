@@ -1,17 +1,17 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import {BrowserRouter} from "react-router-dom";
 import App from './views/App';
-import {BrowserRouter, Route, Routes} from "react-router-dom";
-import HotelPage from "./views/HotelPage/HotelPage";
+import {Provider} from "react-redux";
+import store from './redux/store'
 
 ReactDOM.render(
   <React.StrictMode>
-      <BrowserRouter>
-          <Routes>
-              <Route path="/" element={<App />} />
-              <Route path='hotel/:id' element={ <HotelPage />} />
-          </Routes>
-      </BrowserRouter>
+      <Provider store={store}>
+          <BrowserRouter>
+              <App />
+          </BrowserRouter>
+      </Provider>
   </React.StrictMode>,
   document.getElementById('root')
 );
