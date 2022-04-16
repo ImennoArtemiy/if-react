@@ -7,11 +7,14 @@ export const initialState = {
 }
 
 export const userReducer = (state = initialState, action) => {
-    if (action.type === LOGIN) {
-        return {...state, isLogged: true}
-    }
-    if (action.type === LOGOUT) {
-        return {...state, isLogged: false}
+
+    switch (action.type) {
+        case LOGIN : {
+            return {...state, isLogged: true}
+        }
+        case LOGOUT : {
+            return {...state, isLogged: false}
+        }
     }
 
     return {...state}

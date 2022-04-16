@@ -9,19 +9,11 @@ function FormMd ({onChange}) {
     const [childrenCount, setChildrenCount] = useState(0)
     const [roomsCount, setRoomsCount] = useState(1)
 
-    const [stateFilter, setStateFiler] = useState({
-        state: 'off'
-    })
+    const [stateFilter, setStateFiler] = useState(false)
 
     const clickFilter = (e) => {
         e.stopPropagation()
-
-        if (stateFilter.state === 'off') {
-            setStateFiler({state: 'on'})
-        }
-        if (stateFilter.state === 'on') {
-            setStateFiler({state: 'off'})
-        }
+        setStateFiler(!stateFilter)
     }
 
     const [search, setSearch] = useState('0')
@@ -51,7 +43,7 @@ function FormMd ({onChange}) {
                     {adultsCount} Adults — {childrenCount} Children — {roomsCount} Room
                 </div>
                 {
-                    stateFilter.state === 'on' && <Filter adultsCount={adultsCount}
+                    stateFilter && <Filter adultsCount={adultsCount}
                                                           childrenCount={childrenCount}
                                                           roomsCount={roomsCount}
                                                           setAdultsCount={setAdultsCount}
