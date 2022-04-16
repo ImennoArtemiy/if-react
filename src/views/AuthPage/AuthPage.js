@@ -8,7 +8,7 @@ function AuthPage () {
 
     const isLogin = useSelector(state => state.user.isLogged)
 
-    return isLogin === false ? (<section className='topSection'>
+    return !isLogin ? (<section className='topSection'>
         <TopSectionIcons />
         <Header accountStyle={{fill: '#F5BD41'}}/>
         <FormAuth />

@@ -11,7 +11,7 @@ function Header ({wrapperStyle, accountStyle}) {
     const [wantsToOut, setWantsToOut] = useState(false)
 
     const accountClick = () => {
-        wantsToOut ? setWantsToOut(false) : setWantsToOut(true)
+        setWantsToOut(!wantsToOut)
     }
 
     return  <header style={wrapperStyle}>
