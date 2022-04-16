@@ -1,6 +1,6 @@
 import './FormAuth.css'
 import {useDispatch, useSelector} from "react-redux";
-import {ACTION_LOGIN} from "../../../ducks/user/actions";
+import {login} from "../../../ducks/user/actions";
 import {useState} from "react";
 
 function FormAuth() {
@@ -21,7 +21,7 @@ function FormAuth() {
     const dispatch = useDispatch()
     const handleAuth = () => {
         if (emailValue === userEmail && passValue === userPassword) {
-            dispatch(ACTION_LOGIN())
+            dispatch(login())
         } else {
             setError({
                 error: true

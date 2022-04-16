@@ -49,7 +49,7 @@ function Filter({adultsCount, setAdultsCount, setChildrenCount,
                     <p>What is the age of the child you’re <br/> travelling with?</p>
                     <div className="selectsContainer">
                         {
-                            addRemoveSelect.map((select, index) => <Select key={index}/>)
+                            addRemoveSelect.map(index => <Select key={index}/>)
                         }
                     </div>
 
