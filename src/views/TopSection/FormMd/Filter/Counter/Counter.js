@@ -1,11 +1,15 @@
 import './Counter.css'
+import {useDispatch} from "react-redux";
 
 const Counter = ({minCount, maxCount, text, count, onChange, addRemoveSelect, setAddRemoveSelect}) => {
+
+    const dispatch = useDispatch()
 
     function decrement(e) {
         e.stopPropagation()
 
         if (text === 'Children' && count >= minCount) {
+            dispatch({type:'DELETE_SELECT'})
             setAddRemoveSelect(addRemoveSelect.slice(0, -1))
         }
 
@@ -19,6 +23,7 @@ const Counter = ({minCount, maxCount, text, count, onChange, addRemoveSelect, se
         e.stopPropagation()
 
         if (text === 'Children' && count < maxCount) {
+
             setAddRemoveSelect([...addRemoveSelect, 'Select Component'])
         }
 

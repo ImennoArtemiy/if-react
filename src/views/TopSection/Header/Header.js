@@ -5,17 +5,19 @@ import SignOut from "../SignOut/SignOut";
 import {useSelector} from "react-redux";
 import {useState} from "react";
 
-function Header ({wrapperStyle, accountStyle}) {
+function Header({wrapperStyle, accountStyle}) {
 
     const isLogin = useSelector(state => state.user.isLogged)
     const [wantsToOut, setWantsToOut] = useState(false)
+
+
 
     const accountClick = () => {
         setWantsToOut(!wantsToOut)
     }
 
-    return  <header style={wrapperStyle}>
-        <HeaderIcons />
+    return <header style={wrapperStyle}>
+        <HeaderIcons/>
         <Link to='/'>
             <svg className='headerLogo'>
                 <use href='#logo'/>
@@ -37,7 +39,7 @@ function Header ({wrapperStyle, accountStyle}) {
                     <use href='#account'/>
                 </svg>
                 {
-                  isLogin && wantsToOut && <SignOut />
+                    isLogin && wantsToOut && <SignOut/>
                 }
             </div>
         </nav>

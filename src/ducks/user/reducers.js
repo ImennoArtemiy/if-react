@@ -8,11 +8,11 @@ export const initialState = {
 }
 
 const userReducer = {
-    [login]: (state) => ({
+    [login]: (state = initialState) => ({
         ...state,
         isLogged: true
     }),
-    [logout]: (state) => ({
+    [logout]: (state = initialState) => ({
         ...state,
         isLogged: false
     })
