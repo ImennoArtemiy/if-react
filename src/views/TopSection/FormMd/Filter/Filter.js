@@ -3,20 +3,26 @@ import Select from "./Select/Select";
 import './Filter.css'
 import {useState} from "react";
 
-function Filter({adultsCount, setAdultsCount, setChildrenCount,
-                    childrenCount, setRoomsCount, roomsCount}) {
+function Filter({
+                    adultsCount,
+                    setAdultsCount,
+                    setChildrenCount,
+                    childrenCount,
+                    setRoomsCount,
+                    roomsCount
+                }) {
 
     const counters = [
         {
-            id:1,
+            id: 1,
             onChange: setAdultsCount,
             count: adultsCount,
             text: 'Adults',
             minCount: 1,
-            maxCount:30
+            maxCount: 30
         },
         {
-            id:2,
+            id: 2,
             onChange: setChildrenCount,
             count: childrenCount,
             text: 'Children',
@@ -24,7 +30,7 @@ function Filter({adultsCount, setAdultsCount, setChildrenCount,
             maxCount: 10
         },
         {
-            id:3,
+            id: 3,
             onChange: setRoomsCount,
             count: roomsCount,
             text: 'Rooms',
@@ -41,7 +47,8 @@ function Filter({adultsCount, setAdultsCount, setChildrenCount,
                 counters.map(i => <Counter addRemoveSelect={addRemoveSelect}
                                            setAddRemoveSelect={setAddRemoveSelect}
                                            {...i}
-                                           key={i.id}/>)
+                                           key={i.id}
+                />)
             }
             {
                 childrenCount > 0 &&
@@ -49,7 +56,12 @@ function Filter({adultsCount, setAdultsCount, setChildrenCount,
                     <p>What is the age of the child you’re <br/> travelling with?</p>
                     <div className="selectsContainer">
                         {
-                            addRemoveSelect.map((select, index) => <Select key={index}/>)
+                            addRemoveSelect.map((item, index) => {
+
+                                return (<Select key={`${item}-${index}`}
+                                                index={index}
+                                />)
+                            })
                         }
                     </div>
 

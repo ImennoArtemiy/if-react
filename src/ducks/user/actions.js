@@ -1,12 +1,4 @@
-export const LOGIN = 'LOGIN'
-export const LOGOUT = 'LOGOUT'
+import {createAction} from 'redux-actions'
 
-export const ACTION_LOGIN = (payload) => ({
-    type: LOGIN,
-    payload,
-})
-
-export const ACTION_LOGOUT = (payload) => ({
-    type: LOGOUT,
-    payload,
-})
+export const login = createAction('LOGIN')
+export const logout = createAction('LOGOUT')

@@ -6,40 +6,62 @@ import {useSelector} from "react-redux";
 import {Navigate} from "react-router-dom";
 
 function MainPage() {
-    const [searchValue, setSearchValue] = useState([])
+    const [searchData, setSearchData] = useState('')
     const [serverData, setServerData] = useState([])
-    const [value, setValue] = useState('0')
+    const [value, setValue] = useState(null)
+
+    const [adultsCount, setAdultsCount] = useState(2)
+    const [childrenCount, setChildrenCount] = useState(0)
+    const [roomsCount, setRoomsCount] = useState(1)
+
+    const serverUrl = 'https://fe-student-api.herokuapp.com/api/hotels'
 
     useEffect(() => {
 
-        fetch('https://fe-student-api.herokuapp.com/api/hotels/popular')
+        fetch(`${serverUrl}/popular`)
             .then((response) => {
                 return response.json()
             })
             .then(setServerData)
     }, [])
 
+    const dateFrom = useSelector(state => state.datePickerValues.dateFrom)
+    const dateTo = useSelector(state => state.datePickerValues.dateTo)
+    const selectValues = useSelector(state => state.selectValue.selectValues)
+    const clickSearch = useSelector(state => state.search.try)
 
     useEffect(() => {
 
-        fetch(`https://fe-student-api.herokuapp.com/api/hotels?search=${value}`)
+        fetch(`${serverUrl}?search=${value}&dateFrom=${dateFrom}&dateTo=${dateTo}&adults=${adultsCount}&children=${selectValues}&rooms=${roomsCount}`)
             .then((response) => {
                 return response.json()
             })
-            .then(setSearchValue)
-    }, [value])
+            .then(setSearchData)
+    }, [clickSearch])
+
 
     const isLogin = useSelector(state => state.user.isLogged)
     const email = useSelector(state => state.user.email)
     const password = useSelector(state => state.user.password)
 
     return isLogin && email === 'valera@gmail.com' && password === 'valerasuper123' ? (<>
-        <TopSection onChange={setValue}/>
+        <TopSection onChange={setValue}
+                    adultsCount={adultsCount}
+                    setAdultsCount={setAdultsCount}
+                    childrenCount={childrenCount}
+                    setChildrenCount={setChildrenCount}
+                    roomsCount={roomsCount}
+                    setRoomsCount={setRoomsCount}
+        />
         <main>
 
-            {searchValue.length > 0 && <HotelsResultSection data={searchValue} title={'Available hotels'}/>}
+            {
+                searchData.length > 0  && <HotelsResultSection data={searchData} title={'Available hotels'}/>
+            }
 
-            {serverData.length > 0 && <HotelsResultSection data={serverData} title={'Homes guests loves'}/>}
+            {
+                serverData.length > 0 && <HotelsResultSection data={serverData} title={'Homes guests loves'}/>
+            }
 
         </main>
         <Footer/>

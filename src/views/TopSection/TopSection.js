@@ -4,17 +4,32 @@ import Header from './Header/Header'
 import FormMd from "./FormMd/FormMd"
 import TopSectionIcons from "./TopSectionIcons/TopSectionIcons";
 
-
-function TopSection ({onChange}) {
+function TopSection({
+                        onChange,
+                        adultsCount,
+                        setAdultsCount,
+                        childrenCount,
+                        setChildrenCount,
+                        roomsCount,
+                        setRoomsCount
+                    }) {
 
     return <section className='topSection'>
-        <TopSectionIcons />
+        <TopSectionIcons/>
         <Header/>
         <div className="darkeningLayer">
             <div className="topWrapper">
                 <h1>Discover stays <br/>
                     to live, work or just relax</h1>
-                <FormMd onChange={onChange} />
+                <FormMd
+                    onChange={onChange}
+                    adultsCount={adultsCount}
+                    setAdultsCount={setAdultsCount}
+                    childrenCount={childrenCount}
+                    setChildrenCount={setChildrenCount}
+                    roomsCount={roomsCount}
+                    setRoomsCount={setRoomsCount}
+                />
                 <div className='stores'>
                     <a href="https://play.google.com" target='_blank'>
                         <svg className='googlePlay'>

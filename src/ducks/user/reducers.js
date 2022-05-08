@@ -1,4 +1,5 @@
-import {LOGIN, LOGOUT} from "./actions";
+import {handleActions} from 'redux-actions'
+import {login, logout} from "./actions";
 
 export const initialState = {
     email:'valera@gmail.com',
@@ -6,16 +7,15 @@ export const initialState = {
     isLogged: false,
 }
 
-export const userReducer = (state = initialState, action) => {
-
-    switch (action.type) {
-        case LOGIN : {
-            return {...state, isLogged: true}
-        }
-        case LOGOUT : {
-            return {...state, isLogged: false}
-        }
-    }
-
-    return {...state}
+const userReducer = {
+    [login]: (state = initialState) => ({
+        ...state,
+        isLogged: true
+    }),
+    [logout]: (state = initialState) => ({
+        ...state,
+        isLogged: false
+    })
 }
+
+export default handleActions(userReducer, initialState)

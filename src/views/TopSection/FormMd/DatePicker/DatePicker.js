@@ -1,15 +1,18 @@
-import React, {useState} from "react";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import './DatePicker.css'
+import {useDispatch, useSelector} from "react-redux";
 
 const DataPicker = () => {
-    const [startDate, setStartDate] = useState(null);
-    const [endDate, setEndDate] = useState(null);
+
+    const date = useSelector(state => state.datePickerValues)
+    const dispatch = useDispatch()
+
     const onChange = (dates) => {
         const [start, end] = dates;
-        setStartDate(start);
-        setEndDate(end);
+
+        dispatch({type: 'START_DATE', payload: new Date(start).getTime()})
+        dispatch({type: 'END_DATE', payload: new Date(end).getTime()})
     };
     return (
         <div className="calendarContainer" tabIndex={0}>
@@ -17,16 +20,15 @@ const DataPicker = () => {
                 id='calendarInput'
                 name="datepicker"
                 className="form__item"
-                selected={startDate}
+                selected={date.dateFrom}
                 minDate={new Date()}
                 onChange={onChange}
-                startDate={startDate}
-                endDate={endDate}
+                startDate={date.dateFrom}
+                endDate={date.dateTo}
                 selectsRange
                 monthsShown={2}
                 dateFormat='E, MMM d'
             />
-            <label htmlFor='calendarInput' className='calendarLabel' tabIndex={0}>Check-in — Check-out</label>
         </div>
     );
 };
