@@ -3,22 +3,22 @@ import rootReducer from "./rootReducer";
 import {persistStore, persistReducer} from "redux-persist";
 import LocalStorage from 'redux-persist/lib/storage'
 
-const composeEnhancer = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__
+const devTools = window.__REDUX_DEVTOOLS_EXTENSION__
 
 const persistConfig = {
     key: 'root',
     storage: LocalStorage,
     blacklist: [],
-    whitelist: ['user'],
+    whitelist: ['user', 'changeTheme'],
 }
 const persistedReducer = persistReducer(persistConfig, rootReducer)
 
 export const store = createStore(
     persistedReducer,
-    composeEnhancer()
+    devTools()
 )
 
 
-export const persistor = persistStore(store)
+export const persiStore = persistStore(store)
 
 export default store

@@ -1,7 +1,8 @@
 import Counter from "./Counter/Counter";
 import Select from "./Select/Select";
-import './Filter.css'
 import {useState} from "react";
+import {ChildBlock, FilterWrapper, SelectsWrapper} from "./style";
+import {filter} from "../../../../data/siteConfig";
 
 function Filter({
                     adultsCount,
@@ -42,7 +43,7 @@ function Filter({
     const [addRemoveSelect, setAddRemoveSelect] = useState([])
 
     return (
-        <div className='filter'>
+        <FilterWrapper>
             {
                 counters.map(i => <Counter addRemoveSelect={addRemoveSelect}
                                            setAddRemoveSelect={setAddRemoveSelect}
@@ -52,9 +53,11 @@ function Filter({
             }
             {
                 childrenCount > 0 &&
-                <div className='childBlock'>
-                    <p>What is the age of the child you’re <br/> travelling with?</p>
-                    <div className="selectsContainer">
+                <ChildBlock>
+                    <p>
+                        {filter.childBlock.titleFirst}<br/>{filter.childBlock.titleSecond}
+                    </p>
+                    <SelectsWrapper>
                         {
                             addRemoveSelect.map((item, index) => {
 
@@ -63,11 +66,10 @@ function Filter({
                                 />)
                             })
                         }
-                    </div>
-
-                </div>
+                    </SelectsWrapper>
+                </ChildBlock>
             }
-        </div>
+        </FilterWrapper>
     );
 }
 
