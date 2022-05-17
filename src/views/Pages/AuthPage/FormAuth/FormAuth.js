@@ -5,6 +5,7 @@ import {AuthBody, AuthError, AuthForm, AuthInput} from "./style";
 import {resetAttemptClickSearchBtn} from "../../../../ducks/searchClickBtn/actions";
 import {email, password} from "../../../../ducks/user/selectors";
 import {formFields, errors} from "../../../../data/siteConfig";
+import LabelInput from "../../../../components/LabelInput/LabelInput";
 
 function FormAuth() {
     const dispatch = useDispatch()
@@ -35,16 +36,18 @@ function FormAuth() {
         <AuthForm>
             <AuthBody>
                 <h1>Sign in</h1>
-                <label htmlFor="authEmail">{formFields.email}</label>
-                <AuthInput mb='16px'
-                           id='authEmail'
-                           type="email"
-                           onChange={handleChangeEmail}/>
-                <label htmlFor="authPass">{formFields.pass}</label>
-                <AuthInput mb='24px'
-                           id='authPass'
-                           type="password"
-                           onChange={handleChangePass}/>
+                <LabelInput labelText={formFields.email}
+                            inputMb='16px'
+                            inputId='authEmail'
+                            inputType='email'
+                            inputOnChange={handleChangeEmail}
+                />
+                <LabelInput labelText={formFields.pass}
+                            inputMb='24px'
+                            inputId='authPass'
+                            inputType='password'
+                            inputOnChange={handleChangePass}
+                />
                 <button type='button' onClick={handleAuthClick}>Log In</button>
                 {error && <AuthError>{errors.formAuth}</AuthError>}
             </AuthBody>

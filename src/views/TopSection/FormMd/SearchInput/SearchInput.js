@@ -2,6 +2,7 @@ import {TextInput, Label} from "./style";
 import {useEffect, useState} from "react";
 import {changeValue} from "../../../../ducks/searchValue/actions";
 import {useDispatch, useSelector} from "react-redux";
+import {searchInputValue} from "../../../../ducks/searchValue/selectors";
 
 function SearchInput () {
 
@@ -12,7 +13,7 @@ function SearchInput () {
         dispatch(changeValue(event.target.value.toLowerCase()))
     }
 
-    const searchValue = useSelector(state => state.searchValue.value)
+    const searchValue = useSelector(searchInputValue)
     useEffect(() => {
         setSearch(searchValue)
     }, [searchValue])

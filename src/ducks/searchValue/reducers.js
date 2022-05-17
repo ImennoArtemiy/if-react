@@ -4,9 +4,7 @@ import {changeValue} from "./actions";
 export const initialState = ''
 
 const searchValueReducer = {
-    [changeValue] : (state = initialState, action) => (
-        action.payload
-    )
+    [changeValue] : (state = initialState, action) => action.payload
 }
 
 export default handleActions(searchValueReducer, initialState)

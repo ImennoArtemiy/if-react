@@ -74,7 +74,7 @@ function DestinationSection() {
                          hover={placesActive ? '#4387d7' : '#e6e6e7'}>{buttonsText.places}</Btn>
                 </BtnContainer>
                 {
-                    hide && <CardContainer>
+                    hide && <CardContainer id='cardContainer'>
                         {
                             regionsActive && regionsCard.slice(0, 4)
                         }
@@ -88,7 +88,7 @@ function DestinationSection() {
                     </CardContainer>
                 }
                 {
-                    !hide && <CardContainer>
+                    !hide && <CardContainer id='cardContainer'>
                         {
                             regionsActive && regionsCard
                         }
@@ -102,7 +102,9 @@ function DestinationSection() {
                     </CardContainer>
                 }
                 <OpenHideContainer>
-                    <OpenHideBtn hide={hide} onClick={openHideHandlerClick} bgImg={arrowImg}/>
+                    <a href={hide ? `#${destinations.id}` : '#cardContainer'}>
+                        <OpenHideBtn hide={hide} onClick={openHideHandlerClick} bgImg={arrowImg}/>
+                    </a>
                 </OpenHideContainer>
             </Wrapper>
         </DestinationSectionBlock>

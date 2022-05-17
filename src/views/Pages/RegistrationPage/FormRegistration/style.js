@@ -17,14 +17,7 @@ export const Body = styled.div`
     text-align: center;
     margin-bottom: 40px;
   }
-
-  label {
-    display: block;
-    font-size: 16px;
-    line-height: 18px;
-    margin-bottom: 8px;
-  }
-
+  
   button {
     display: block;
     width: 100%;
@@ -42,15 +35,6 @@ export const Body = styled.div`
       background-color: #1a5ca6;
     }
   }
-`
-export const Input = styled.input`
-  display: block;
-  width: 100%;
-  height: 41px;
-  padding: 12px;
-  border: 2px solid #CECECE;
-  border-radius: 8px;
-  margin-bottom: ${props => props.mb};
 `
 
 export const RegError = styled.p`

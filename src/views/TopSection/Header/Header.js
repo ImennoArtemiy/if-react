@@ -22,12 +22,7 @@ function Header({padding}) {
         setUserWantsToOut(!userWantsToOut)
     }
     const themeToggle = () => {
-        if (theme === themes.default) {
-            dispatch(darkTheme())
-        }
-        if (theme === themes.dark) {
-            dispatch(defaultTheme())
-        }
+        theme === themes.default ? dispatch(darkTheme()) : dispatch(defaultTheme())
     }
     const resetClickSearchCount = () => {
         dispatch(resetAttemptClickSearchBtn())

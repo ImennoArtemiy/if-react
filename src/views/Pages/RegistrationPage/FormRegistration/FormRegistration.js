@@ -1,6 +1,7 @@
 import {Body, Form, Input, RegError} from "./style";
 import {useState} from "react";
 import {formFields, errors} from "../../../../data/siteConfig";
+import LabelInput from "../../../../components/LabelInput/LabelInput";
 
 function FormRegistration({setRegistered}) {
 
@@ -37,21 +38,23 @@ function FormRegistration({setRegistered}) {
         <Form>
             <Body>
                 <h1>Fill in the fields</h1>
-                <label htmlFor="regEmail">{formFields.email}</label>
-                <Input mb='16px'
-                       id='regEmail'
-                       type="email"
-                       onChange={handleChange}/>
-                <label htmlFor="regPass">{formFields.pass}</label>
-                <Input mb='24px'
-                       id='regPass'
-                       type="password"
-                       onChange={handleChange}/>
-                <label htmlFor="regPhone">{formFields.phone}</label>
-                <Input mb='24px'
-                       id='regPhone'
-                       type="number"
-                       onChange={handleChange}
+                <LabelInput labelText={formFields.email}
+                            inputMb='16px'
+                            inputId='regEmail'
+                            inputType='email'
+                            inputOnChange={handleChange}
+                />
+                <LabelInput labelText={formFields.pass}
+                            inputMb='16px'
+                            inputId='regPass'
+                            inputType='password'
+                            inputOnChange={handleChange}
+                />
+                <LabelInput labelText={formFields.phone}
+                            inputMb='24px'
+                            inputId='regPhone'
+                            inputType='number'
+                            inputOnChange={handleChange}
                 />
                 <button onClick={handleRegisteredClick} type='button'>Sign up</button>
                 {error && <RegError>{errors.formReg}</RegError>}

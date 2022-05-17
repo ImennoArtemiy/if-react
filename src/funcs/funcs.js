@@ -17,10 +17,16 @@ export const showGoToTopBnt = (showEl) => {
 
 export const serverRequest = (hook, url, setState, deps) => {
     hook(() => {
+        let isMounted = true
         fetch(url)
             .then((response) => {
                 return response.json()
             })
-            .then(setState)
+            .then(data => {
+                if (isMounted) {
+                    setState(data)
+                }
+            })
+        return () => { isMounted = false}
     }, [deps])
 }
