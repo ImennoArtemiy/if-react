@@ -1,14 +1,16 @@
 import {combineReducers} from "redux";
 import userReducer from "../ducks/user/reducers";
-import hotelsReducer from "../ducks/hotels/reducers"
 import datePickerReducer from "../ducks/datePickerValues/reducers"
 import selectReducer from "../ducks/selectsValue/reducers"
-import searchReducer from "../ducks/search/reducers"
+import searchClickReducer from "../ducks/searchClickBtn/reducers"
+import changeThemeReducer from '../ducks/changeTheme/reducers'
+import searchValueReducer from '../ducks/searchValue/reducers'
 
 export default combineReducers({
     user: userReducer,
-    hotel: hotelsReducer,
     datePickerValues: datePickerReducer,
     selectValue: selectReducer,
-    search: searchReducer,
+    searchClickBtn: searchClickReducer,
+    searchValue: searchValueReducer,
+    changeTheme: changeThemeReducer,
 })

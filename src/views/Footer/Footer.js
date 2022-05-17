@@ -1,26 +1,47 @@
-import './Footer.css'
-import LinkColumn from "./FooterColumn/FooterColumn";
+import LinkColumn from "./LinkColumn/FooterColumn";
+import {Wrapper} from "../../styles/components";
+import styled from "styled-components";
+import {svgIcons} from "../../data/siteConfig";
+import {leftLinks, rightLinks, middleLinks, copyright} from "../../data/footer";
 
-function Footer({wrapper}) {
-    const leftLinks = ['About', 'How Triphouse works', 'Careers', 'Privacy', 'Terms']
-    const middleLinks = ['Property types', 'Guest houses', 'Hotels', 'Apartments', 'Villas', 'Holiday homes', 'Hostels']
-    const rightLinks = ['Support', 'Contact Customer Service', 'FAQ']
+const MainFooter = styled.footer`
+  background-color: ${props => props.theme.footer.bg};
+  transition: .5s ease;
+`
+const FooterLogo = styled.svg`
+  display: none;
+  fill: #FFFFFF;
+  width: 98px;
+  height: 19px;
+  margin: 0 auto;
+`
+const FooterBody = styled.div`
+  display: flex;
+  margin-bottom: 64px;
+`
+const Copyright = styled.p`
+  color: #FFFFFF;
+  font-size: 14px;
+`
 
-    return <footer className="footer">
-        <div style={wrapper} className="wrapper">
-            <a href="#">
-                <svg className='footerTrip-houseLogo'>
-                    <use xlinkHref='#logo'/>
-                </svg>
-            </a>
-            <div className="footerBody">
-                <LinkColumn arrLinks={leftLinks}/>
-                <LinkColumn arrLinks={middleLinks} />
-                <LinkColumn arrLinks={rightLinks} />
-            </div>
-            <p className="copyright">&copy; 2020 Triphouse, Inc. All rights reserved</p>
-        </div>
-    </footer>
+function Footer({padding}) {
+    return (
+        <MainFooter>
+            <Wrapper padding={padding}>
+                <a href="#">
+                    <FooterLogo>
+                        <use href={svgIcons.siteLogo}/>
+                    </FooterLogo>
+                </a>
+                <FooterBody>
+                    <LinkColumn arrLinks={leftLinks}/>
+                    <LinkColumn arrLinks={middleLinks}/>
+                    <LinkColumn arrLinks={rightLinks}/>
+                </FooterBody>
+                <Copyright>{copyright}</Copyright>
+            </Wrapper>
+        </MainFooter>
+    )
 }
 
 export default Footer

@@ -1,8 +1,10 @@
-import './TopSection.css'
-import './TopSectionIcons/TopSectionIcons.css'
 import Header from './Header/Header'
 import FormMd from "./FormMd/FormMd"
-import TopSectionIcons from "./TopSectionIcons/TopSectionIcons";
+import TopSectionIcons from "../../assets/img/topSection/TopSectionIcons";
+import {TopWrapper} from "../../styles/components";
+import {TopSectionTag, MainTitle, Stores, GooglePlayIcon, AppleStoreIcon, DarkeningLayer} from "./style";
+import topBackgroundImg from '../../assets/img/topSection/topBackground.png'
+import {svgIcons, googlePlayUrl, appleStoreUrl, topSection} from "../../data/siteConfig";
 
 function TopSection({
                         onChange,
@@ -14,13 +16,15 @@ function TopSection({
                         setRoomsCount
                     }) {
 
-    return <section className='topSection'>
-        <TopSectionIcons/>
-        <Header/>
-        <div className="darkeningLayer">
-            <div className="topWrapper">
-                <h1>Discover stays <br/>
-                    to live, work or just relax</h1>
+    return (
+        <TopSectionTag id={topSection.id} background={topBackgroundImg}>
+            <DarkeningLayer/>
+            <TopSectionIcons/>
+            <Header/>
+            <TopWrapper>
+                <MainTitle>
+                    {topSection.titleFirst}<br/>{topSection.titleSecond}
+                </MainTitle>
                 <FormMd
                     onChange={onChange}
                     adultsCount={adultsCount}
@@ -30,21 +34,21 @@ function TopSection({
                     roomsCount={roomsCount}
                     setRoomsCount={setRoomsCount}
                 />
-                <div className='stores'>
-                    <a href="https://play.google.com" target='_blank'>
-                        <svg className='googlePlay'>
-                            <use href='#googlePlay'/>
-                        </svg>
+                <Stores>
+                    <a href={googlePlayUrl} target='_blank'>
+                        <GooglePlayIcon>
+                            <use href={svgIcons.googlePlay}/>
+                        </GooglePlayIcon>
                     </a>
-                    <a href="https://www.apple.com/app-store" target='_blank'>
-                        <svg className='appleStore'>
-                            <use href='#appleStore'/>
-                        </svg>
+                    <a href={appleStoreUrl} target='_blank'>
+                        <AppleStoreIcon>
+                            <use href={svgIcons.appleStore}/>
+                        </AppleStoreIcon>
                     </a>
-                </div>
-            </div>
-        </div>
-    </section>
+                </Stores>
+            </TopWrapper>
+        </TopSectionTag>
+    )
 }
 
 export default TopSection

@@ -1,5 +1,6 @@
-import './Counter.css'
 import {useDispatch} from "react-redux";
+import {CounterBlock, CounterBody, CounterBtn} from "./style";
+import {deleteSelect} from "../../../../../ducks/selectsValue/actions";
 
 const Counter = ({minCount, maxCount, text, count, onChange, addRemoveSelect, setAddRemoveSelect}) => {
 
@@ -9,7 +10,7 @@ const Counter = ({minCount, maxCount, text, count, onChange, addRemoveSelect, se
         e.stopPropagation()
 
         if (text === 'Children' && count >= minCount) {
-            dispatch({type:'DELETE_SELECT'})
+            dispatch(deleteSelect())
             setAddRemoveSelect(addRemoveSelect.slice(0, -1))
         }
 
@@ -34,18 +35,18 @@ const Counter = ({minCount, maxCount, text, count, onChange, addRemoveSelect, se
     }
 
     return (
-        <div className='counterBlock'>
+        <CounterBlock>
             <p>{text}</p>
-            <div className="counterBody">
-                <button type='button'
-                        className={count === minCount ? 'counterBtn -disableBtn' : 'counterBtn'}
-                        onClick={decrement}>-</button>
+            <CounterBody>
+                <CounterBtn count={count}
+                            minCount={minCount}
+                            onClick={decrement}>-</CounterBtn>
                 <p>{count}</p>
-                <button type='button'
-                        className={count === maxCount ? 'counterBtn -disableBtn' : 'counterBtn'}
-                        onClick={increment}>+</button>
-            </div>
-        </div>
+                <CounterBtn count={count}
+                            maxCount={maxCount}
+                            onClick={increment}>+</CounterBtn>
+            </CounterBody>
+        </CounterBlock>
     )
 }
 

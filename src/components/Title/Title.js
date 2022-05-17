@@ -1,9 +1,29 @@
-import './Title.css'
+import styled from "styled-components";
 
-function Title ({text}) {
+const TitleH2 = styled.h2`
+  font-weight: 500;
+  font-size: 40px;
+  line-height: 46px;
+  text-align: center;
+  margin-bottom: 90px;
+  color: ${props => props.theme.titleColor};
+  
+  @media (max-width: 768px) {
+    font-size: 32px;
+    line-height: 38px;
+    margin-bottom: 32px;
+  }
+  
+  @media (max-width: 480px) {
+    font-size: 28px;
+    line-height: 32px;
+  }
+`
+
+function Title({text}) {
 
     return (
-        <h2>{text}</h2>
+        <TitleH2>{text}</TitleH2>
     )
 }
 

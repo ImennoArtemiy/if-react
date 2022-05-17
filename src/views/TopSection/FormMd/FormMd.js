@@ -1,8 +1,13 @@
-import './FormMd.css'
-import {useState} from "react"
-import Filter from "./Filter/Filter"
+import {useDispatch, useSelector} from "react-redux";
+import {useEffect, useState} from "react"
+import SearchInput from "./SearchInput/SearchInput";
 import DatePicker from "./DatePicker/DatePicker"
-import {useDispatch} from "react-redux";
+import Filter from "./Filter/Filter"
+import {ClickAwayListener} from "@mui/base";
+import {clickSearchBtn} from "../../../ducks/searchClickBtn/actions";
+import {BorderContainer, ButtonWrapper, FilterBtn, Form, SearchBtn} from "./style";
+import {availableHotels, filter} from "../../../data/siteConfig";
+import {searchInputValue} from "../../../ducks/searchValue/selectors";
 
 function FormMd({
                     onChange,
@@ -14,57 +19,63 @@ function FormMd({
                     setRoomsCount
                 }) {
 
-    const [openFilter, setOpenFiler] = useState(false)
+    const [openFilter, setOpenFilter] = useState(false)
     const [search, setSearch] = useState('')
 
-    const clickFilter = (e) => {
-        e.stopPropagation()
-        setOpenFiler(!openFilter)
-    }
-
-
-    const handlerChange = (event) => {
-        let inputValue = event.target.value.toLowerCase()
-        setSearch(inputValue)
-    }
-
     const dispatch = useDispatch()
-    const handlerClick = () => {
-        onChange(search)
-        dispatch({type: "SEARCH"})
+
+    const handleFilterBtn = (e) => {
+        (e.target.id === filter.filterBtn.id) && setOpenFilter(!openFilter)
     }
 
-    return <form action=''>
-        <div className='searchField'>
-            <input id='textToFindInput'
-                   className='textToFindInput'
-                   type='text'
-                   required
-                   onChange={handlerChange}
-            />
-            <label className='textToFindLabel' htmlFor='textToFindInput'>Your destination or hotel name</label>
-        </div>
-        <div className='borderContainer'>
-            <div className="buttonContainer">
-                <DatePicker/>
-                <div className="filterContainer" tabIndex='0' onClick={clickFilter}>
-                    {adultsCount} Adults — {childrenCount} Children — {roomsCount} Room
-                </div>
-                {
-                    openFilter && <Filter adultsCount={adultsCount}
-                                          childrenCount={childrenCount}
-                                          roomsCount={roomsCount}
-                                          setAdultsCount={setAdultsCount}
-                                          setChildrenCount={setChildrenCount}
-                                          setRoomsCount={setRoomsCount}
-                    />
-                }
-                <button type='button' className="searchButton"
-                        onClick={handlerClick}>Search
-                </button>
-            </div>
-        </div>
-    </form>
+    const handlerSearchClick = () => {
+        onChange(search)
+        dispatch(clickSearchBtn())
+    }
+    const handleClickAway = () => {
+        setOpenFilter(false)
+    }
+
+    const searchValue = useSelector(searchInputValue)
+    useEffect(() => {
+        setSearch(searchValue)
+    }, [searchValue])
+
+    return (
+        <Form>
+
+            <BorderContainer>
+                <SearchInput/>
+                <ButtonWrapper>
+                    <DatePicker/>
+                    <FilterBtn id={filter.filterBtn.id} tabIndex='0'
+                               onClick={handleFilterBtn}>
+                        {
+                            filter.filterBtn.getTitle(adultsCount, childrenCount, roomsCount)
+                        }
+                        {
+                            openFilter &&
+                            <ClickAwayListener onClickAway={handleClickAway}>
+                                <div>
+                                    <Filter adultsCount={adultsCount}
+                                            childrenCount={childrenCount}
+                                            roomsCount={roomsCount}
+                                            setAdultsCount={setAdultsCount}
+                                            setChildrenCount={setChildrenCount}
+                                            setRoomsCount={setRoomsCount}
+                                    />
+                                </div>
+                            </ClickAwayListener>
+                        }
+                    </FilterBtn>
+
+                    <a href={`#${availableHotels.id}`}>
+                        <SearchBtn onClick={handlerSearchClick}>Search</SearchBtn>
+                    </a>
+                </ButtonWrapper>
+            </BorderContainer>
+        </Form>
+    )
 }
 
 export default FormMd

@@ -2,8 +2,8 @@ import {handleActions} from 'redux-actions'
 import {startDate, endDate} from "./actions";
 
 export const initialState = {
-    dateFrom: Date.now(),
-    dateTo: Date.now(),
+    dateFrom: null,
+    dateTo: null,
 }
 
 const datePickerReducer = {
