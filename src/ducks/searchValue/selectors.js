@@ -1,1 +1,1 @@
-export const searchInputValue = state => state.searchValue.value
+export const searchInputValue = state => state.searchValue

@@ -1,7 +1,6 @@
 import arrow from '../../assets/arrow.png'
 
-const SlickArrowBtn = (props) => {
-    const {className, onClick} = props;
+const SlickArrowBtn = ({className, onClick}) => {
     return (
         <div
             className={className}
